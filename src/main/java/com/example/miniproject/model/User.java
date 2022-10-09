@@ -3,6 +3,9 @@ package com.example.miniproject.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.json.Json;
+import jakarta.json.JsonObject;
+
 public class User {
 
     private String email;

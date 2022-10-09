@@ -1,5 +1,9 @@
 package com.example.miniproject.model;
 
+import org.jsoup.Jsoup;
+
+import jakarta.json.JsonObject;
+
 public class Quote {
     private String author;      // a
     private String quote;       // q
@@ -38,7 +42,7 @@ public class Quote {
         quote.setAuthor(jo.getString("a"));
         quote.setQuote(jo.getString("q"));
         quote.setCharCount(jo.getString("c"));
-        quote.setFormattedQuote(jo.getString("h"));
+        quote.setFormattedQuote(quote.format(jo.getString("h")));
         // System.out.println("Quote Created: " + quote);
         return quote;
     }
@@ -48,9 +52,16 @@ public class Quote {
         Quote quote = new Quote();
         quote.setAuthor(jo.getString("a"));
         quote.setQuote(jo.getString("q"));
-        quote.setFormattedQuote(jo.getString("h"));
+        quote.setFormattedQuote(quote.format(jo.getString("h")));
         // System.out.println("Quote Created: " + quote);
         return quote;
+
+    }
+
+    public String format(String quote) {
+
+        String formattedQuote = Jsoup.parse(quote).text();
+        return formattedQuote;
 
     }
     

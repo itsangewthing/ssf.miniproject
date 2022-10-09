@@ -14,6 +14,11 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import com.example.miniproject.model.Quote;
 
+import jakarta.json.Json;
+import jakarta.json.JsonArray;
+import jakarta.json.JsonObject;
+import jakarta.json.JsonReader;
+
 @Service
 public class QuoteService {
     

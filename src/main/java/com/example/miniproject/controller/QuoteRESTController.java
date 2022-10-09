@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.miniproject.service.UserService;
 
+import jakarta.json.Json;
+import jakarta.json.JsonObject;
+
 @RestController
 @RequestMapping
 public class QuoteRESTController {

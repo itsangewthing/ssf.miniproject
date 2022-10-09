@@ -48,7 +48,7 @@ public class QuoteController {
         return "login";
     }
 
-    @PostMapping(path="/loggedIn")
+    @PostMapping(path = "/loggedIn")
     public String userLogin(@RequestBody MultiValueMap<String, String> form, Model model) {
 
         String email = form.getFirst("email").toLowerCase();
@@ -73,10 +73,9 @@ public class QuoteController {
         }
     }
 
-
     @GetMapping("/list")
     public String getListOfQuotes(@RequestParam("email") String userEmail, Model model) {
-        
+
         List<Quote> quotes = quoteService.getQuotesList();
 
         model.addAttribute("email", userEmail);
@@ -87,7 +86,7 @@ public class QuoteController {
 
     @GetMapping("/today")
     public String getQuoteOfTheDay(@RequestParam("email") String userEmail, Model model) {
-        
+
         Quote q = quoteService.getTodayQuote();
 
         model.addAttribute("email", userEmail);
@@ -98,7 +97,7 @@ public class QuoteController {
 
     @GetMapping("/random")
     public String getRandomQuote(@RequestParam("email") String userEmail, Model model) {
-        
+
         Quote q = quoteService.getTodayQuote();
 
         model.addAttribute("email", userEmail);
@@ -108,8 +107,10 @@ public class QuoteController {
     }
 
     @PostMapping(path = "/save")
-    public String saveQuotes(@RequestBody MultiValueMap<String, String> form, @RequestParam("saveCheckbox") List<String> checkboxValue, @RequestParam("email") String userEmail, Model model) {
-        
+    public String saveQuotes(@RequestBody MultiValueMap<String, String> form,
+            @RequestParam("saveCheckbox") List<String> checkboxValue, @RequestParam("email") String userEmail,
+            Model model) {
+
         System.out.println("Checkbox values: " + checkboxValue);
 
         if (checkboxValue.size() == 1) {
@@ -131,10 +132,9 @@ public class QuoteController {
         return "search";
     }
 
-
     @RequestMapping(path = "/{email}")
     public String retrieveQuotes(@PathVariable(name = "email") String email, Model model) {
-        
+
         if (userService.existingUser(email)) {
             List<String> saved = userService.retrieveQuotes(email);
             model.addAttribute("quotes", saved);

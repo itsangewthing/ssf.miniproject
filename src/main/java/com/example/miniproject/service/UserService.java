@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.miniproject.model.User;
-import com.example.miniproject.repository.UserRepository;
+import com.example.miniproject.repositories.UserRepository;
 
 import jakarta.json.Json;
 import jakarta.json.JsonObject;
